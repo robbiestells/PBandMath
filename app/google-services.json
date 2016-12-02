@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "618524907939",
+    "firebase_url": "https://pbandmath-febfc.firebaseio.com",
+    "project_id": "pbandmath-febfc",
+    "storage_bucket": "pbandmath-febfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618524907939:android:8c7339d94dd4d20a",
+        "android_client_info": {
+          "package_name": "com.example.studio111.pbandmath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618524907939-lr65bedj8qqonsfalpq9mo1gsov4j7a6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studio111.pbandmath",
+            "certificate_hash": "A9C95E79339B1939750E861CE50066631CFF7A9C"
+          }
+        },
+        {
+          "client_id": "618524907939-jgbm2899trdamrfgr239v9drvkfekncl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpfYThhiChL3xWmJdVrmURUVhvPB8RyHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618524907939-jgbm2899trdamrfgr239v9drvkfekncl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
