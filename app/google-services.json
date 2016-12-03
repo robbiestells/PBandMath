@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "618524907939-l0tbhoumib3t18vkfsfvt3a65ooq57s7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studio111.pbandmath",
+            "certificate_hash": "E0906C067E701A06F787A69B7346FF01EFC38E33"
+          }
+        },
+        {
           "client_id": "618524907939-lr65bedj8qqonsfalpq9mo1gsov4j7a6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

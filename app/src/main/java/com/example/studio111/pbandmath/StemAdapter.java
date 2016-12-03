@@ -24,7 +24,7 @@ public class StemAdapter extends ArrayAdapter<Stem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return super.getView(position, convertView, parent);
+
         if (convertView == null) {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.stem, parent, false);
         }

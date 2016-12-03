@@ -5,19 +5,19 @@ package com.example.studio111.pbandmath;
  */
 
 public class Stem {
-    private String text;
+    private String stem;
 
     public Stem(){}
 
-    public Stem(String text){
-        this.text = text;
+    public Stem(String stem){
+        this.stem = stem;
     }
 
     public String getText(){
-        return text;
+        return stem;
     }
 
-    public void setText(String text){
-        this.text = text;
+    public void setText(String stem){
+        this.stem = stem;
     }
 }
