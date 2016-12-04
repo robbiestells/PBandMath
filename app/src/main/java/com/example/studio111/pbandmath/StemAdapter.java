@@ -30,10 +30,14 @@ public class StemAdapter extends ArrayAdapter<Stem> {
         }
 
         TextView stemTextView = (TextView) convertView.findViewById(R.id.stemTextView);
+        TextView idTextView = (TextView) convertView.findViewById(R.id.idTextView);
+        TextView otherTextView = (TextView) convertView.findViewById(R.id.otherTextView);
 
         Stem stem = getItem(position);
 
-        stemTextView.setText(stem.getText());
+        stemTextView.setText(stem.getStem());
+        idTextView.setText(stem.getId());
+        otherTextView.setText(stem.getOther());
 
         return convertView;
     }
