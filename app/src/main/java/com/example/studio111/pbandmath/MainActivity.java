@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 1;
     private static final int RC_PHOTO_PICKER = 2;
 
-    private ListView mMessageListView;
-    private StemAdapter mMessageAdapter;
+    private ListView mStemListView;
+    private StemAdapter mStemAdapter;
     private ProgressBar mProgressBar;
     private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private String mUsername;
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mMessagesDatabaseReference;
+    private DatabaseReference mStemDatabaseReference;
     private ChildEventListener mChildEventListener;
 //    private FirebaseAuth mFirebaseAuth;
 //    private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
        // mFirebaseAuth = FirebaseAuth.getInstance();
 
         //referencing the specific part of the database
-        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("stems");
+        mStemDatabaseReference = mFirebaseDatabase.getReference().child("stems");
 
         //initialize Firebase storage
       //  mFirebaseStorage = FirebaseStorage.getInstance();
@@ -94,15 +94,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize references to views
       //  mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mMessageListView = (ListView) findViewById(R.id.messageListView);
+        mStemListView = (ListView) findViewById(R.id.messageListView);
 //        mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
 //        mMessageEditText = (EditText) findViewById(R.id.messageEditText);
 //        mSendButton = (Button) findViewById(R.id.sendButton);
 
         // Initialize message ListView and its adapter
         List<Stem> friendlyMessages = new ArrayList<>();
-        mMessageAdapter = new StemAdapter(this, R.layout.stem, friendlyMessages);
-        mMessageListView.setAdapter(mMessageAdapter);
+        mStemAdapter = new StemAdapter(this, R.layout.stem, friendlyMessages);
+        mStemListView.setAdapter(mStemAdapter);
         if (mChildEventListener == null) {
             //set up database listener
             mChildEventListener = new ChildEventListener() {
@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     //gets just the new message added and desserializes it based on
                     //the FriendlyMessage class
-                    Stem friendlyMessage = dataSnapshot.getValue(Stem.class);
-                    mMessageAdapter.add(friendlyMessage);
+                    Stem stem = dataSnapshot.getValue(Stem.class);
+                    mStemAdapter.add(stem);
                 }
 
                 @Override
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             };
-            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
+            mStemDatabaseReference.addChildEventListener(mChildEventListener);
         }
         attachDatabaseReadListener();
         // Initialize progress bar
@@ -327,8 +327,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     //gets just the new message added and desserializes it based on
                     //the FriendlyMessage class
-                    Stem friendlyMessage = dataSnapshot.getValue(Stem.class);
-                    mMessageAdapter.add(friendlyMessage);
+                    Stem stem = dataSnapshot.getValue(Stem.class);
+                    mStemAdapter.add(stem);
                 }
 
                 @Override
@@ -347,13 +347,13 @@ public class MainActivity extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             };
-            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
+            mStemDatabaseReference.addChildEventListener(mChildEventListener);
         }
     }
 
     private void detachDatabaseReadListener() {
         if (mChildEventListener != null) {
-            mMessagesDatabaseReference.removeEventListener(mChildEventListener);
+            mStemDatabaseReference.removeEventListener(mChildEventListener);
             mChildEventListener = null;
         }
     }

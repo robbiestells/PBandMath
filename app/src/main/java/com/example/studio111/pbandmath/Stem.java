@@ -5,31 +5,37 @@ package com.example.studio111.pbandmath;
  */
 
 public class Stem {
-    private String stem;
+    private String stems;
     private String id;
-    private String other;
+    private String cat;
+    private String grade;
 
     public Stem(){}
 
-    public Stem(String stem, String id, String other){
-        this.stem = stem;
+    public Stem(String grade, String cat, String id, String stems){
+        this.cat = cat;
+        this.grade = grade;
+        this.stems = stems;
         this.id = id;
-        this.other = other;
     }
 
     public String getStem(){
-        return stem;
+        return stems;
     }
 
-    public void setStem(String stem){
-        this.stem = stem;
+    public void setStem(String stems){
+        this.stems = stems;
     }
 
     public String getId(){return id;}
 
     public void setId(String id){this.id = id;}
 
-    public String getOther(){return other;}
+    public String getCategory(){return cat;}
 
-    public void setOther(String other){this.other = other;}
+    public void setCategory(String other){this.cat = cat;}
+
+    public String getGrade(){return grade;}
+
+    public void setGrade(String grade){this.grade = grade;}
 }

@@ -37,7 +37,7 @@ public class StemAdapter extends ArrayAdapter<Stem> {
 
         stemTextView.setText(stem.getStem());
         idTextView.setText(stem.getId());
-        otherTextView.setText(stem.getOther());
+        otherTextView.setText(stem.getCategory());
 
         return convertView;
     }
