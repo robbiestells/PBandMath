@@ -1,41 +1,52 @@
 package com.example.studio111.pbandmath;
 
+import static android.R.attr.value;
+
 /**
  * Created by rsteller on 12/2/2016.
  */
 
 public class Stem {
-    private String stems;
-    private String id;
-    private String cat;
-    private String grade;
+    private String stem;
+    private int id;
+    private String category;
+    private int grade;
+    private String FIELD8;
+    private String logic;
+    private String ranges;
+    private String solution;
 
     public Stem(){}
 
-    public Stem(String grade, String cat, String id, String stems){
-        this.cat = cat;
+    public Stem(String FIELD8, String category, int grade, int id, String logic, String ranges, String solution, String stem){
+        this.FIELD8 = FIELD8;
+        this.category = category;
         this.grade = grade;
-        this.stems = stems;
         this.id = id;
+        this.logic = logic;
+        this.ranges = ranges;
+        this.solution = solution;
+        this.stem = stem;
+
     }
 
     public String getStem(){
-        return stems;
+        return stem;
     }
 
-    public void setStem(String stems){
-        this.stems = stems;
+    public void setStem(String stem){
+        this.stem = stem;
     }
 
-    public String getId(){return id;}
+    public String getId(){return String.valueOf(id);}
 
-    public void setId(String id){this.id = id;}
+    public void setId(int id){this.id = id;}
 
-    public String getCategory(){return cat;}
+    public String getCategory(){return category;}
 
-    public void setCategory(String other){this.cat = cat;}
+    public void setCategory(String category){this.category = category;}
 
-    public String getGrade(){return grade;}
+    public String getGrade(){return String.valueOf(grade);}
 
-    public void setGrade(String grade){this.grade = grade;}
+    public void setGrade(int grade){this.grade = grade;}
 }

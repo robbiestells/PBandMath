@@ -78,22 +78,22 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         //initialize auth object
-       // mFirebaseAuth = FirebaseAuth.getInstance();
+        // mFirebaseAuth = FirebaseAuth.getInstance();
 
-        //referencing the specific part of the database
-        mStemDatabaseReference = mFirebaseDatabase.getReference().child("stems");
+        //referencing the specific part of the database .child("stems")
+        mStemDatabaseReference = mFirebaseDatabase.getReference();
 
         //initialize Firebase storage
-      //  mFirebaseStorage = FirebaseStorage.getInstance();
+        //  mFirebaseStorage = FirebaseStorage.getInstance();
 
         //referencing the specific folder in storage
-       // mChatPhotosStorageReference = mFirebaseStorage.getReference().child("chat_photos");
+        // mChatPhotosStorageReference = mFirebaseStorage.getReference().child("chat_photos");
 
         //Initialize remote config
-       // mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        // mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
 
         // Initialize references to views
-      //  mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //  mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mStemListView = (ListView) findViewById(R.id.messageListView);
 //        mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
 //        mMessageEditText = (EditText) findViewById(R.id.messageEditText);
@@ -133,191 +133,7 @@ public class MainActivity extends AppCompatActivity {
             mStemDatabaseReference.addChildEventListener(mChildEventListener);
         }
         attachDatabaseReadListener();
-        // Initialize progress bar
-      //  mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-
-        // ImagePickerButton shows an image picker to upload a image for a message
-//        mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Fire an intent to show an image picker
-//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                intent.setType("image/jpeg");
-//                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-//                startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
-//            }
-//        });
-
-        // Enable Send button when there's text to send
-//        mMessageEditText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if (charSequence.toString().trim().length() > 0) {
-//                    mSendButton.setEnabled(true);
-//                } else {
-//                    mSendButton.setEnabled(false);
-//                }
-//            }
-
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//            }
-//        });
-//        mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
-//
-//        // Send button sends a message and clears the EditText
-//        mSendButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Creating a FriendlyMessage object
-//                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null);
-//
-//                //push message to database
-//                mMessagesDatabaseReference.push().setValue(friendlyMessage);
-//
-//                // Clear input box
-//                mMessageEditText.setText("");
-//            }
-//        });
-
-//        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                //check if user is signed in
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    //user is signed in
-//                    onSignedInInitialize(user.getDisplayName());
-//                } else {
-//                    //user is signed out
-//                    onSignedOutCleanup();
-//                    startActivityForResult(
-//                            AuthUI.getInstance()
-//                                    .createSignInIntentBuilder()
-//                                    .setIsSmartLockEnabled(false)
-//                                    .setProviders(
-//                                            AuthUI.EMAIL_PROVIDER,
-//                                            AuthUI.GOOGLE_PROVIDER)
-//                                    .build(),
-//                            RC_SIGN_IN);
-//                }
-//            }
-//        };
-        //Set up remote config
-//        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder().setDeveloperModeEnabled(BuildConfig.DEBUG).build();
-//        mFirebaseRemoteConfig.setConfigSettings(configSettings);
-//
-//        Map<String, Object> defaultConfigMap = new HashMap<>();
-//        defaultConfigMap.put(FRIENDLY_MSG_LENGTH_KEY, DEFAULT_MSG_LENGTH_LIMIT);
-//        mFirebaseRemoteConfig.setDefaults(defaultConfigMap);
-//        fetchConfig();
-
     }
-
-//    private void fetchConfig() {
-//        long cacheExpiration = 3600;
-//
-//        if (mFirebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()){
-//            cacheExpiration = 0;
-//        }
-//        mFirebaseRemoteConfig.fetch(cacheExpiration).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                mFirebaseRemoteConfig.activateFetched();
-//                applyRetrievedLengthLimit();
-//            }
-//        })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error fetching config", e);
-//                        applyRetrievedLengthLimit();
-//                    }
-//                });
-//    }
-
-//    private void applyRetrievedLengthLimit(){
-//        Long friendly_msg_length = mFirebaseRemoteConfig.getLong(FRIENDLY_MSG_LENGTH_KEY);
-//        mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(friendly_msg_length.intValue())});
-//        Log.d(TAG, FRIENDLY_MSG_LENGTH_KEY + " = " + friendly_msg_length);
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.main_menu, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.sign_out_menu:
-//                //sign out
-//                AuthUI.getInstance().signOut(this);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == RC_SIGN_IN) {
-//            if (resultCode == RESULT_OK) {
-//                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
-//            } else if (resultCode == RESULT_CANCELED) {
-//                Toast.makeText(this, "Signed in canceled", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//        } else if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
-//            Uri selectedImageUri = data.getData();
-//
-//            //Get a reference to store file at chat_photos/<FILENAME>
-//            StorageReference photoRef = mChatPhotosStorageReference.child(selectedImageUri.getLastPathSegment());
-//
-//            //upload file to Firebase storage
-//            photoRef.putFile(selectedImageUri).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
-//                    FriendlyMessage friendlyMessage = new FriendlyMessage(null, mUsername, downloadUrl.toString());
-//                    mMessagesDatabaseReference.push().setValue(friendlyMessage);
-//                }
-//            });
-//        }
-    //}
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        if (mAuthStateListener != null) {
-//            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
-//        }
-//        detachDatabaseReadListener();
-//        mMessageAdapter.clear();
-//    }
-//
-//    private void onSignedInInitialize(String username) {
-//        mUsername = username;
-//        attachDatabaseReadListener();
-//    }
-
-//    private void onSignedOutCleanup() {
-//        mUsername = ANONYMOUS;
-//        mMessageAdapter.clear();
-//        detachDatabaseReadListener();
-//    }
 
     private void attachDatabaseReadListener() {
         if (mChildEventListener == null) {
